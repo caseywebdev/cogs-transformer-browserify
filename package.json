@@ -1,12 +1,16 @@
 {
-  "name": "cogs-transformer-example",
+  "name": "cogs-transformer-browserify",
   "version": "1.0.0",
   "author": "Casey Foster <c@sey.me>",
-  "description": "An example transformer for Cogs.",
+  "description": "A browserify transformer for Cogs.",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/caseywebdev/cogs-transformer-example"
+    "url": "https://github.com/caseywebdev/cogs-transformer-browserify"
+  },
+  "dependencies": {
+    "browserify": "11.2.0",
+    "underscore": "1.8.3"
   },
   "devDependencies": {
     "cogs-test-helper": "1.x"
