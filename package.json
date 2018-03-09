@@ -1,6 +1,6 @@
 {
   "name": "cogs-transformer-browserify",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "author": "Casey Foster <c@sey.me>",
   "description": "A browserify transformer for Cogs.",
   "license": "MIT",
@@ -9,11 +9,11 @@
     "url": "https://github.com/caseywebdev/cogs-transformer-browserify"
   },
   "dependencies": {
-    "browserify": "11.2.0",
+    "browserify": "16.1.1",
     "underscore": "1.8.3"
   },
   "devDependencies": {
-    "cogs-test-helper": "1.x"
+    "cogs-test-helper": "3"
   },
   "scripts": {
     "test": "cogs-test-helper test/test.js"

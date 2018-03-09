@@ -1,13 +1,22 @@
+const {promisify} = require('util');
 var _ = require('underscore');
 var browserify = require('browserify');
+var Duplex = require('stream').Duplex;
 var path = require('path');
 
-module.exports = function (file, options, cb) {
-  options = _.extend({
-    standalone: file.path.split(path.sep).join('-')
-  }, options);
-  browserify(file.path, options).bundle(function (er, buffer) {
-    if (er) return cb(er);
-    cb(null, {buffer: buffer});
-  });
+function bufferToStream(buffer) {
+  let stream = new Duplex();
+  stream.push(buffer);
+  stream.push(null);
+  return stream;
+}
+
+module.exports = async ({file: {buffer, path: filePath}, options}) => {
+  options = _.extend(
+    {standalone: filePath.split(path.sep).join('-'), debug: true},
+    options
+  );
+
+  const package = browserify(bufferToStream(buffer), options);
+  return {buffer: await promisify(package.bundle.bind(package))()};
 };
